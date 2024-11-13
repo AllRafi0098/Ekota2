@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekota</title>
+
+    
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image:url();
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color:#000000;
+     
+        }
+            .menu {
+                  font-size:24px;
+                  cursor: pointer;
+                }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #FFFFFF;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            width: 150px;
+            border-radius: 4px;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+        video{
+          padding-top:40Px;
+        }
+        .images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .images img {
+            width: calc(50% - 5px);
+            height: 280px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .paragraph {
+            margin-top: 20px;
+            line-height: 1.6;
+            
+        }
+        .about {
+          
+            margin-top: 30px;
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+        }
+    h1{
+      text-align: center;
+      
+    }
+    h2{
+      text-align: center;
+    }
+video.viva{
+  border-radius: 500px;
+  
+  
+}
+/* Modal Style */
+.modal {
+    display: none; /* মডাল প্রথমে লুকানো থাকবে */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* ব্যাকগ্রাউন্ড কালো শেড */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.modal-content {
+    width: 90%;
+    max-width: 800px; /* বড় আকৃতির জন্য সর্বোচ্চ চওড়া */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.7); /* শ্যাডো আরো গাঢ় */
+    animation: zoom 0.6s; /* zoom এনিমেশন */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content img {
+    width: 100%; /* পুরো চওড়া */
+    height: auto;
+    display: block;
+    border-radius: 10px; /* ইমেজের কোনাগুলো মোলায়েম করা */
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5); /* ক্লোজ বাটনের ব্যাকগ্রাউন্ড কালো */
+    padding: 5px 10px;
+    border-radius: 50%;
+    transition: transform 0.3s; /* হোভার এনিমেশন */
+}
+
+.close:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Zoom Animation */
+@keyframes zoom {
+    from {transform: scale(0.8);} /* ছোট শুরু */
+    to {transform: scale(1);} /* পুরো আকারে আসবে */
+}
+@keyframes zoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+/* Animation for page load */
+        /* Animation for page load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(100px);
+            animation: fadeIn 3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+       .join-btn {
+            position: relative;
+            display: inline-block;
+            padding: 15px 30px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            overflow: hidden;
+            border-radius: 50px;
+            background-color: #4CAF50;
+            transition: 0.4s;
+        }
+
+        .join-btn:hover {
+            color: #4CAF50;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+        }
+
+        .join-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            transition: all 0.4s;
+            border-radius: 50px;
+            z-index: -1;
+        }
+
+        .join-btn:hover::before {
+            left: 0;
+        }
+    
+
+    
+    
+                /* Responsive Style */
+        @media (max-width: 600px) {
+            .contact-info {
+                padding: 20px;
+            }
+    </style>
+</head>
+<body>
+  
+
+    <div class="container fade-in">
+        <header>
+            <div class="logo" >Ekota</div>
+<div class="menu" id="menuIcon" onclick="toggleMenu()">☰</div>
+<div class="dropdown-menu" id="dropdownMenu">
+    <a href="index.html">Home</a>
+    <a href="service.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About Us</a>
+</div>
+        </header>
+         
+        <h1>بسم الله الرحمن الرحىم</h1>
+       <h2>আসসালামু আলাইকুম ওয়ারহমাতুল্লাহি ওয়াবারাকাতুহু</h2>
+<div>
+  <video class="viva"loop muted autoplay="autoplay"   width="350"  src="/Ekota.mp4"></video>
+</div>
+        <div class="images">
+            <img src="/img /A.jpg" alt="Image 1" onclick="openModal(this)">
+            <img src="/img /b.jpg" alt="Image 2" onclick="openModal(this)">
+            
+            <img src="/img /f.jpg" alt="Image 3" onclick="openModal(this)">
+            <img src="/img /d.jpg" alt="Image 4" onclick="openModal(this)">
+            <h2>Bazar List</h2>
+        </div>
+
+       
+          <video autoplay="autoplay" controls loop width="342"height="340"   src="/video/1.mp4">ekota</video>
+            <p class="paragraph">অবশেষে ঈদের আনন্দকে আরও বিশেষ করে তুলতে আমরা নিয়ে এসেছি "ঈদ প্যাকেজ" পরিষেবা। প্রতি মাসে মাত্র ৪০০ টাকা করে জমা করেই আপনি নিশ্চিত করতে পারেন ঈদের দিনে আপনার ঘরে আসবে বিশেষ প্যাকেজ, যেখানে থাকবে প্রয়োজনীয় সামগ্রী এবং ছোট ছোট চমক। আমাদের লক্ষ্য – ঈদ আনন্দ সবার ঘরে ছড়িয়ে দেয়া, যেন এই দিনে কোনো অভাব না থাকে, শুধু ভালোবাসা ও খুশির ছোঁয়া থাকে। আমাদের সাথে যুক্ত হয়ে আপনার ও আপনার প্রিয়জনদের জন্য এই ছোট্ট উদ্যোগে অংশ নিন, আর প্রস্তুতি নিন একটি ভরপুর ঈদের জন্য!
+
+</p>
+       
+
+        <div class="images">
+            <img src="/img /g .jpg" alt="Image 6" onclick="openModal(this)"
+            
+               <img src="/img /h.jpg" alt="Image 6" onclick="openModal(this)"
+            >
+            <p class="paragraph">চলুন, এই ঈদে একটু ভিন্নভাবে উদযাপন করি! প্রতি মাসে মাত্র ৪০০ টাকা জমা রাখলেই ঈদের দিন আপনার দরজায় আসবে বিশেষ একটি প্যাকেজ—নতুন রকমের চমক আর ভালোবাসায় ভরা। এতে শুধু বাজারের পণ্য নয়, থাকবে এমন কিছু বিশেষ উপহার যা আপনার ঈদকে আরও রঙিন ও আনন্দময় করে তুলবে। পরিবারের সবার জন্য থাকবে ছোট ছোট বিস্ময় যা আপনাদের ঈদ আনন্দে ভরিয়ে তুলবে। আজই আমাদের সাথে যুক্ত হয়ে এই বিশেষ যাত্রায় অংশ নিন। এই ঈদে দিনটিকে করে তুলুন অনন্য!
+
+</p>
+
+
+    
+
+    
+    <a href="https://jahidhasan2.netlify.app/" class="join-btn">Join Now</a>
+
+
+
+
+  <!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+        <img id="img01">
+    </div>
+</div>
+<footer style="
+    background-color: white;
+    color: black;
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    font-size: 16px;
+">
+    <p>&copy; 2024 AllRafi. All rights reserved.</p>
+    <p>                         <a href="https://www.facebook.com/allu.rafi.92?mibextid=ZbWKwL" style="color: #ccc; text-decoration: none; margin: 0 10px;">Facebook</a> |
+                                 <a href="https://www.instagram.com/allu.rafi/profilecard/?igsh=MXc3d3B4aTd3Mmc5Yw==" style="color: #ccc; text-decoration: none; margin: 0 10px;">Instagram</a> |
+                                 <a href="https://www.threads.net/@allu.rafi?invite=0" style="color: #ccc; text-decoration: none; margin: 0 10px;">Threads
+    </p>
+</footer>
+
+
+
+    <script>
+        // Toggle Menu Function
+
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+        
+        
+        function toggleMenu() {
+    const menuIcon = document.getElementById('menuIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none';
+        menuIcon.textContent = '☰'; // মেনু ক্লোজ হলে পুনরায় ☰ দেখাবে
+    } else {
+        dropdownMenu.style.display = 'block';
+        menuIcon.textContent = '×'; // মেনু ওপেন হলে × দেখাবে
+    }
+}
+
+     // Open Modal Function
+function openModal(img) {
+    var modal = document.getElementById("myModal");
+    var modalImg = document.getElementById("img01");
+    modal.style.display = "flex"; // মডাল দেখাবে
+    modalImg.src = img.src; // ক্লিক করা ইমেজটি দেখাবে
+}
+
+// Close Modal Function
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none"; // মডাল লুকাবে
+}
+        // Add fade-in class when the page loads
+window.onload = function() {
+    document.body.classList.add("fade-in");
+};
+
+    </script>
+
+</body>
+</html>

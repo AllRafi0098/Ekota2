@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .menu {
+            font-size: 24px;
+            cursor: pointer;
+        }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background-color: #f0f0f0;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    width: 150px;
+    border-radius: 4px;
+    z-index: 100; /* এটি যোগ করা হয়েছে */
+}
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        .dropdown-menu a:hover {
+            background-color: #ddd;
+        }
+
+        /* Contact Info Box */
+        .contact-info {
+            background-color: #f8f8f8;
+            padding: 50px;
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 40px auto;
+            text-align: center;
+        }
+        .contact-info h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .contact-info p {
+            font-size: 18px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .contact-info .section-title {
+            font-weight: bold;
+            font-size: 20px;
+            color: #333;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Animation for page load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(100px);
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Style */
+        @media (max-width: 600px) {
+            .contact-info {
+                padding: 30px;
+            }
+            .contact-info h3 {
+                font-size: 22px;
+            }
+            .contact-info p {
+                font-size: 16px;
+            }
+            .contact-info .section-title {
+                font-size: 18px;
+            }
+        }
+  </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Ekota</div>
+<div class="menu" id="menuIcon" onclick="toggleMenu()">☰</div>
+            <div class="dropdown-menu" id="dropdownMenu">
+              <a href="index.html">Home</a>
+              <a href="service.html">Services</a>
+              <a href="contact.html">Contact</a>
+              <a href="about.html">About Us</a>
+            </div>
+            
+        </header>
+        
+        <!-- Contact Info Section -->
+        <div class="contact-info fade-in">
+            <h3>Contact Information</h3>
+            
+            <div class="section-title">Phone Numbers:</div>
+            <p>+8801976668284</p>
+            <p>+8801846831070</p>
+            
+            <div class="section-title">Email Addresses:</div>
+            <p>allrafi20011117@gmail.com</p>
+            <p>sabbirsafwan3@gmail.com</p>
+            
+            <div class="section-title">Address:</div>
+            <p>শান্তিনগর, ২নং ঢ্বাকেশরী, গোদনাইল, সিদ্ধিরগঞ্জ, নারায়ণগঞ্জ, এল,এন,সি, মিলস ১৪৩২</p>
+        </div>
+    </div>
+
+    <footer style="background-color: white; color: black; margin-top: 50px; padding: 20px; text-align: center; font-size: 16px;">
+        <p>&copy; 2024 All Rafi. All rights reserved.</p>
+        <p>
+                         <a href="https://www.facebook.com/allu.rafi.92?mibextid=ZbWKwL" style="color: #ccc; text-decoration: none; margin: 0 10px;">Facebook</a> |
+                <a href="https://www.instagram.com/allu.rafi/profilecard/?igsh=MXc3d3B4aTd3Mmc5Yw==" style="color: #ccc; text-decoration: none; margin: 0 10px;">Instagram</a> |
+                <a href="https://www.threads.net/@allu.rafi?invite=0" style="color: #ccc; text-decoration: none; margin: 0 10px;">Threads</a>
+                
+        </p>
+    </footer>
+
+    <script>
+        // Toggle Menu Function
+        function toggleMenu() {
+            var menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+                
+        function toggleMenu() {
+    const menuIcon = document.getElementById('menuIcon');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none';
+        menuIcon.textContent = '☰'; // মেনু ক্লোজ হলে পুনরায় ☰ দেখাবে
+    } else {
+        dropdownMenu.style.display = 'block';
+        menuIcon.textContent = '×'; // মেনু ওপেন হলে × দেখাবে
+    }
+}
+        
+        // Add fade-in class when the page loads
+        window.onload = function() {
+            document.body.classList.add("fade-in");
+        };
+    </script>
+</body>
+</html>
